@@ -35,7 +35,7 @@ fun HomeScreen(){
         )
 
         Image(painter = painterResource(R.drawable.img),
-            contentDescription = "lambo"
+            contentDescription = "img"
         )
 
 
