@@ -1,6 +1,7 @@
 package com.felix.harakamall.ui.Screens.intent
 
 import android.content.Intent
+import android.provider.MediaStore
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,10 +26,13 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.net.toUri
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.felix.harakamall.navigation.ROUT_INTENT
 import com.felix.harakamall.navigation.ROUT_ITEM
 import com.felix.harakamall.ui.theme.blue
 import com.felix.harakamall.ui.theme.white
@@ -37,6 +41,7 @@ import com.felix.harakamall.ui.theme.white
 @Composable
 fun IntentScreen(navController: NavController){
     Column (modifier = Modifier.fillMaxSize()){
+        val mContext = LocalContext.current
         //TopAppBar
         TopAppBar(
             title = { Text(text = "INTENTS") },
@@ -53,7 +58,13 @@ fun IntentScreen(navController: NavController){
                 }
             },
             actions = {
-                IconButton(onClick = {}) {
+                IconButton(onClick = {
+                    val shareIntent=Intent(Intent.ACTION_SEND)
+                    shareIntent.type="text/plain"
+                    shareIntent.putExtra(Intent.EXTRA_TEXT, "Check out this is a cool content")
+                    mContext.startActivity(Intent.createChooser(shareIntent, "Share"))
+
+                }) {
                     Icon(imageVector = Icons.Default.Share, contentDescription = "Shop")
 
                 }
@@ -61,7 +72,9 @@ fun IntentScreen(navController: NavController){
                     Icon(imageVector = Icons.Default.Settings, contentDescription = "Notifications")
 
                 }
-                IconButton(onClick = {}) {
+                IconButton(onClick = {
+
+                }) {
                     Icon(imageVector = Icons.Default.ArrowForward, contentDescription = "Notifications")
 
                 }
@@ -71,6 +84,11 @@ fun IntentScreen(navController: NavController){
         Spacer(modifier = Modifier.height(30.dp))
         //BUTTON STK
         Button(onClick = {
+            val simToolKitLaunchIntent =
+                mContext.packageManager.getLaunchIntentForPackage("com.android.stk")
+            simToolKitLaunchIntent?.let { mContext.startActivity(it) }
+
+
 
         },
             colors = ButtonDefaults.buttonColors(blue),
@@ -81,8 +99,11 @@ fun IntentScreen(navController: NavController){
             Text( text = "MPESA")
         }
         Spacer(modifier = Modifier.height(30.dp))
-        //BUTTON STK
+        //BUTTON CALL
         Button(onClick = {
+            val callIntent=Intent(Intent.ACTION_DIAL)
+            callIntent.data="tel:0720245837".toUri()
+            mContext.startActivity(callIntent)
 
         },
             colors = ButtonDefaults.buttonColors(blue),
@@ -90,11 +111,18 @@ fun IntentScreen(navController: NavController){
             modifier = Modifier.fillMaxWidth().padding(start =20.dp, end = 20.dp)
 
         ) {
-            Text( text = "MPESA")
+            Text( text = "CALL")
         }
         Spacer(modifier = Modifier.height(30.dp))
-        //BUTTON STK
+        //BUTTON CAMERA
         Button(onClick = {
+            val cameraIntent=Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            if (cameraIntent.resolveActivity(mContext.packageManager)!=null){
+                mContext.startActivity(cameraIntent)
+            }else{
+                println("Camera app is not available")
+            }
+
 
         },
             colors = ButtonDefaults.buttonColors(blue),
@@ -102,11 +130,18 @@ fun IntentScreen(navController: NavController){
             modifier = Modifier.fillMaxWidth().padding(start =20.dp, end = 20.dp)
 
         ) {
-            Text( text = "MPESA")
+            Text( text = "CAMERA")
         }
         Spacer(modifier = Modifier.height(30.dp))
-        //BUTTON STK
+        //BUTTON EMAIL
         Button(onClick = {
+            val shareIntent = Intent(Intent.ACTION_SEND)
+            shareIntent.type = "text/plain"
+            shareIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf("akinyiglory2@gmail.com"))
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "subject")
+            shareIntent.putExtra(Intent.EXTRA_TEXT, "Hello, this is the email body")
+            mContext.startActivity(shareIntent)
+
 
         },
             colors = ButtonDefaults.buttonColors(blue),
@@ -114,11 +149,16 @@ fun IntentScreen(navController: NavController){
             modifier = Modifier.fillMaxWidth().padding(start =20.dp, end = 20.dp)
 
         ) {
-            Text( text = "MPESA")
+            Text( text = "EMAIL")
         }
         Spacer(modifier = Modifier.height(30.dp))
-        //BUTTON STK
+        //BUTTON SHARE
         Button(onClick = {
+            val shareIntent=Intent(Intent.ACTION_SEND)
+            shareIntent.type="text/plain"
+            shareIntent.putExtra(Intent.EXTRA_TEXT, "Check out this is a cool content")
+            mContext.startActivity(Intent.createChooser(shareIntent, "Share"))
+
 
         },
             colors = ButtonDefaults.buttonColors(blue),
@@ -126,7 +166,25 @@ fun IntentScreen(navController: NavController){
             modifier = Modifier.fillMaxWidth().padding(start =20.dp, end = 20.dp)
 
         ) {
-            Text( text = "MPESA")
+            Text( text = "SHARE")
+        }
+        Spacer(modifier = Modifier.height(30.dp))
+        //BUTTON SMS
+        Button(onClick = {
+            val smsIntent=Intent(Intent.ACTION_SENDTO)
+            smsIntent.data="smsto:0720245837".toUri()
+            smsIntent.putExtra("sms_body","Hello Glory,how was your day?")
+            mContext.startActivity(smsIntent)
+
+
+
+        },
+            colors = ButtonDefaults.buttonColors(blue),
+            shape = RoundedCornerShape(10.dp),
+            modifier = Modifier.fillMaxWidth().padding(start =20.dp, end = 20.dp)
+
+        ) {
+            Text( text = "SMS")
         }
 
 
