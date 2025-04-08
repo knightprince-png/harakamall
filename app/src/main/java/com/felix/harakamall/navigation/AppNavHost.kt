@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.felix.harakamall.ui.Screens.about.AboutScreen
+import com.felix.harakamall.ui.Screens.dashboard.DashboardScreen
 import com.felix.harakamall.ui.Screens.intent.IntentScreen
 import com.felix.harakamall.ui.Screens.item.ItemScreen
 import com.nyokabi.harakamall.ui.screens.Home.HomeScreen
@@ -40,6 +41,9 @@ fun AppNavHost(
         }
         composable(ROUT_INTENT) {
             IntentScreen(navController)
+        }
+        composable(ROUT_DASH) {
+            DashboardScreen(navController)
         }
 
 
