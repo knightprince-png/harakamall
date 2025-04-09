@@ -1,13 +1,18 @@
 package com.nyokabi.harakamall.ui.screens.Home
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -26,7 +31,9 @@ fun HomeScreen(navController: NavController
 ){
 
     Column (
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ){
         Text(
             text = "HarakaMall",
@@ -37,7 +44,8 @@ fun HomeScreen(navController: NavController
         )
 
         Image(painter = painterResource(R.drawable.img),
-            contentDescription = "img"
+            contentDescription = "img",
+            modifier = Modifier.width(300.dp).height(180.dp)
         )
 
 

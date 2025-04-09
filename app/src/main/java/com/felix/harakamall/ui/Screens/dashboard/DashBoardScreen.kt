@@ -2,6 +2,7 @@ package com.felix.harakamall.ui.Screens.dashboard
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -35,9 +36,15 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.felix.harakamall.ui.theme.blue
 import com.felix.harakamall.R
+import com.felix.harakamall.navigation.ROUT_ABOUT
+import com.felix.harakamall.navigation.ROUT_CONTACT
+import com.felix.harakamall.navigation.ROUT_HOME
+import com.felix.harakamall.navigation.ROUT_ITEM
+import com.felix.harakamall.navigation.ROUT_START
 import com.felix.harakamall.ui.theme.blue
 import com.felix.harakamall.ui.theme.blue
 import com.felix.harakamall.ui.theme.blue
+import com.felix.harakamall.ui.theme.white
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -53,7 +60,7 @@ fun DashboardScreen(navController: NavController){
             Card(
                 modifier = Modifier.fillMaxWidth().height(300.dp),
                 shape = RoundedCornerShape(bottomStart = 60.dp, bottomEnd = 60.dp),
-                colors = CardDefaults.cardColors(blue)
+                colors = CardDefaults.cardColors(white)
 
             ) {
 
@@ -95,7 +102,8 @@ fun DashboardScreen(navController: NavController){
 
             //card
             Card (
-                modifier = Modifier.width(150.dp).height(180.dp),
+                modifier = Modifier.width(150.dp).height(180.dp).clickable { navController.navigate(
+                    ROUT_HOME) },
                 elevation = CardDefaults.cardElevation()
             ){
                 Column (
@@ -125,7 +133,8 @@ fun DashboardScreen(navController: NavController){
 
             //card2
             Card (
-                modifier = Modifier.width(150.dp).height(180.dp),
+                modifier = Modifier.width(150.dp).height(180.dp).clickable { navController.navigate(
+                    ROUT_ABOUT) },
                 elevation = CardDefaults.cardElevation()
             ){
                 Column (
@@ -161,7 +170,8 @@ fun DashboardScreen(navController: NavController){
 
             //card3
             Card (
-                modifier = Modifier.width(150.dp).height(180.dp),
+                modifier = Modifier.width(150.dp).height(180.dp).clickable { navController.navigate(
+                    ROUT_CONTACT) },
                 elevation = CardDefaults.cardElevation()
             ){
                 Column (
@@ -191,7 +201,8 @@ fun DashboardScreen(navController: NavController){
 
             //card4
             Card (
-                modifier = Modifier.width(150.dp).height(180.dp),
+                modifier = Modifier.width(150.dp).height(180.dp).clickable { navController.navigate(
+                    ROUT_ITEM) },
                 elevation = CardDefaults.cardElevation()
             ){
                 Column (
