@@ -45,14 +45,14 @@ fun ContactScreen(navController: NavController){
         //TopBar
         topBar = {
             TopAppBar(
-                title = { Text("Item Screen") },
+                title = { Text("Contact") },
                 navigationIcon = {
                     IconButton(onClick = { /* Handle back/nav */ }) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.LightGray,
+                    containerColor = Color.Blue,
                     titleContentColor = Color.White,
                     navigationIconContentColor = Color.White
                 )
@@ -62,7 +62,7 @@ fun ContactScreen(navController: NavController){
         //BottomBar
         bottomBar = {
             NavigationBar(
-                containerColor = Color.LightGray
+                containerColor = Color.Blue
             ){
                 NavigationBarItem(
                     icon = { Icon(Icons.Default.Home, contentDescription = "Home") },
@@ -96,7 +96,7 @@ fun ContactScreen(navController: NavController){
         floatingActionButton = {
             FloatingActionButton(
                 onClick = { /* Add action */ },
-                containerColor = Color.LightGray
+                containerColor = Color.Blue
             ) {
                 Icon(Icons.Default.Add, contentDescription = "Add")
             }
