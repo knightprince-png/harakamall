@@ -11,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import com.felix.harakamall.ui.Screens.about.AboutScreen
 import com.felix.harakamall.ui.Screens.contact.ContactScreen
 import com.felix.harakamall.ui.Screens.dashboard.DashboardScreen
+import com.felix.harakamall.ui.Screens.form.FormScreen
 import com.felix.harakamall.ui.Screens.intent.IntentScreen
 import com.felix.harakamall.ui.Screens.item.ItemScreen
 import com.nyokabi.harakamall.ui.screens.Home.HomeScreen
@@ -49,6 +50,10 @@ fun AppNavHost(
         composable(ROUT_CONTACT) {
             ContactScreen(navController)
         }
+        composable(ROUT_FORM) {
+            FormScreen(navController)
+        }
+
 
 
 
