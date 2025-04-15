@@ -9,3 +9,7 @@ const val ROUT_INTENT = "intent"
 const val ROUT_DASH = "Dashboard"
 const val ROUT_CONTACT = "Contacts"
 const val ROUT_FORM = "Form"
+const val ROUT_FORM2 = "Form2"
+//Auth
+const val ROUT_REGISTER = "Register"
+const val ROUT_LOGIN = "Login"
