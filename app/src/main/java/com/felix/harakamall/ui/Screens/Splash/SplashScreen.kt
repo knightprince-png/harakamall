@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.felix.harakamall.R
+import com.felix.harakamall.navigation.ROUT_LOGIN
 import com.felix.harakamall.navigation.ROUT_START
 import com.felix.harakamall.ui.theme.blue
 import com.felix.harakamall.ui.theme.white
@@ -67,7 +68,7 @@ fun  SplashScreen(navController: NavController){
     val coroutine = rememberCoroutineScope()
     coroutine.launch {
         delay(2000)
-        navController.navigate(ROUT_START)
+        navController.navigate(ROUT_LOGIN)
 
     }
 

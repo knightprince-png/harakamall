@@ -12,6 +12,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.felix.harakamall.data.UserDatabase
 import com.felix.harakamall.repository.UserRepository
+import com.felix.harakamall.ui.Screens.Splash.SplashScreen
 import com.felix.harakamall.ui.Screens.about.AboutScreen
 import com.felix.harakamall.ui.Screens.auth.LoginScreen
 import com.felix.harakamall.ui.Screens.auth.RegisterScreen
@@ -30,7 +31,7 @@ import java.text.Normalizer.Form
 fun AppNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = ROUT_FORM2
+    startDestination: String = ROUT_SPLASH
 ) {
 val context = LocalContext.current
     NavHost(
@@ -65,6 +66,10 @@ val context = LocalContext.current
         composable(ROUT_FORM2) {
             Form2Screen(navController)
         }
+        composable(ROUT_SPLASH) {
+            SplashScreen(navController)
+        }
+
 
         //AUTHENTICATION
 
