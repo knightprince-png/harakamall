@@ -45,7 +45,7 @@ fun  SplashScreen(navController: NavController){
         Spacer(modifier = Modifier.height(20.dp))
 
         Image(
-            painter = painterResource(R.drawable.img_4),
+            painter = painterResource(R.drawable.img),
             contentDescription = "home",
             modifier = Modifier
                 .size(30.dp)
